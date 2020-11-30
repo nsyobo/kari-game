@@ -326,18 +326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7108409205360941969, guid: 1e249f521a98c41fdba5ec9e4eb01acd, type: 3}
-      propertyPath: jumpForce
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108409205360941969, guid: 1e249f521a98c41fdba5ec9e4eb01acd, type: 3}
-      propertyPath: magneticRotationSpeedFly
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108409205360941969, guid: 1e249f521a98c41fdba5ec9e4eb01acd, type: 3}
-      propertyPath: magneticRotationSpeedGrounded
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 7108409205360941970, guid: 1e249f521a98c41fdba5ec9e4eb01acd, type: 3}
       propertyPath: m_RootOrder
       value: 3
