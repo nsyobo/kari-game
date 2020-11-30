@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff48df774f00c844ba82432273c1c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 7
+  movementSpeed: 15
   rotationSpeed: 100
   magneticRotationSpeedGrounded: 70
   magneticRotationSpeedFly: 70
