@@ -78,10 +78,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   rotationSpeed: 100
-  magneticRotationSpeedGrounded: 70
-  magneticRotationSpeedFly: 70
+  magneticRotationSpeedGrounded: 80
+  magneticRotationSpeedFly: 0.5
   gravitySpeed: 500
-  jumpForce: 500
+  jumpForce: 700
   RayCastLayerMask:
     serializedVersion: 2
     m_Bits: 1
