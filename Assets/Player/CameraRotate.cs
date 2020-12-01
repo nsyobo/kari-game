@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class CameraRotate : MonoBehaviour
 { 
     Vector3 targetPos;
@@ -30,6 +29,15 @@ public class CameraRotate : MonoBehaviour
         float mouseInputX = Input.GetAxis("Mouse X");
         float mouseInputY = Input.GetAxis("Mouse Y");
         transform.RotateAround(targetPos, Vector3.up, mouseInputX * Time.deltaTime * X);
+        if (transform.forward.y > 0.9f && mouseInputY < 0)
+        {
+            mouseInputY = 0;
+        }
+        if (transform.forward.y < -0.9f && mouseInputY > 0)
+        {
+            mouseInputY = 0;
+        }
         transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * Y);
+        targetPos = new Vector3(targetPos.x, targetPos.y, targetPos.z);
     }
 }

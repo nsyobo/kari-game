@@ -64,7 +64,6 @@ public class MagneticCharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Rotate();
         MagneticRotate();
         Gravitate();
     }
@@ -86,7 +85,14 @@ public class MagneticCharacterController : MonoBehaviour
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
         if(moveForward != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(moveForward);
+            if (inputVertical > 0)
+            {
+                transform.rotation = Quaternion.LookRotation(moveForward);
+            }
+            if (inputVertical < 0)
+            {
+                transform.rotation = Quaternion.LookRotation(-moveForward);
+            }
         }
 
         // Jumping.
@@ -102,15 +108,7 @@ public class MagneticCharacterController : MonoBehaviour
     /// <summary>
     /// Rotates the character using user's input.
     /// </summary>
-    private void Rotate()
-    {
-        // Left and right turn in place.
-        var inputHorizontal = Input.GetAxis("Horizontal");
-        animator?.SetFloat("RotatingSpeed", inputHorizontal);
-        var rotationOffset = Quaternion.AngleAxis(inputHorizontal * rotationSpeed, Vector3.up);
-        var targetRotation = transform.rotation * rotationOffset;
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime);
-    }
+
     /// <summary>
     /// Rotates the character to the nearest walking surface.
     /// </summary>
