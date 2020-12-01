@@ -76,10 +76,18 @@ public class MagneticCharacterController : MonoBehaviour
     {
         // Forward and backward movement.
         var inputVertical = Input.GetAxis("Vertical");
+        var inputHorizontal = Input.GetAxis("Horizontal");
         animator?.SetFloat("WalkingSpeed", inputVertical);
         var positionOffset = transform.forward * inputVertical * movementSpeed;
         var targetPosition = transform.position + positionOffset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.fixedDeltaTime);
+
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
+        if(moveForward != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveForward);
+        }
 
         // Jumping.
         if (Input.GetKeyDown("space") && isGrounded)
@@ -103,7 +111,6 @@ public class MagneticCharacterController : MonoBehaviour
         var targetRotation = transform.rotation * rotationOffset;
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime);
     }
-
     /// <summary>
     /// Rotates the character to the nearest walking surface.
     /// </summary>
